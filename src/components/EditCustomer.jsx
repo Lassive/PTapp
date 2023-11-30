@@ -6,6 +6,7 @@ import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import CustomerDialog from "./CustomerDialog";
 import DialogTitle from '@mui/material/DialogTitle';
+import EditIcon from '@mui/icons-material/Edit';
 
 
 function EditCustomer({ fetchCustomers, data }) {
@@ -55,6 +56,7 @@ function EditCustomer({ fetchCustomers, data }) {
         })  
         .catch(err => console.error(err))
     };
+    
 
     const handleChange = (newValue, customerProps) => {
     setCustomer({ ...customer, [customerProps]: newValue });
@@ -64,10 +66,10 @@ function EditCustomer({ fetchCustomers, data }) {
     return (
         <div>
             <Button size="small" onClick={handleClickOpen}>
-                edit
+            <EditIcon /> 
             </Button>
             <Dialog open={open} onClose={handleClose}>
-                <DialogTitle>Edit Customer</DialogTitle>
+                <DialogTitle> Edit </DialogTitle>
                 <CustomerDialog customer={customer} handleChange={handleChange} />
                 <DialogActions>
                     <Button onClick={handleClose}>Cancel</Button>

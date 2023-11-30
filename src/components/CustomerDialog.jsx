@@ -7,7 +7,7 @@ function CustomerDialog({ customer, handleChange }) {
         <DialogContent>
             <TextField 
                 margin="dense"
-                label="firstname"
+                label="Firstname"
                 fullWidth
                 variant="standard"
                 value={customer.firstname}
