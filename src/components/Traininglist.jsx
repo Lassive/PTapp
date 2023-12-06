@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { AgGridReact } from "ag-grid-react";
 import { Button } from "@mui/material";
-import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
+import DeleteIcon from '@mui/icons-material/Delete';
 
 import "ag-grid-community/styles/ag-grid.css";
 import "ag-grid-community/styles/ag-theme-material.css";
@@ -60,7 +60,7 @@ function TrainingsList() {
         },
         {
             cellRenderer: params => 
-            <Button size="small" onClick={() => deleteTraining("http://traineeapp.azurewebsites.net/api/trainings/" + params.data.id)}><DeleteOutlineIcon style={{ color: 'red' }} /></Button>,
+            <Button size="small" onClick={() => deleteTraining("http://traineeapp.azurewebsites.net/api/trainings/" + params.data.id)}><DeleteIcon style={{ color: 'red' }} /></Button>,
             width: 90
         },
     ]);

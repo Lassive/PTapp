@@ -31,7 +31,7 @@ function Calendar() {
     const endTime = new Date(startTime.getTime() + training.duration * 60000);
 
     return {
-      title: training.activity,
+      title: `${training.activity} - ${training.customer.firstname} ${training.customer.lastname}`,
       start: startTime,
       end: endTime,
       allDay: false,

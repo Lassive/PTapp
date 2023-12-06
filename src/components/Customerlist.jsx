@@ -7,7 +7,9 @@ import AddCustomer from "./AddCustomer";
 import EditCustomer from "./EditCustomer";
 import { Button } from "@mui/material";
 import AddTraining from "./AddTraining";
-import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
+import DeleteIcon from '@mui/icons-material/Delete';
+
+import { CSVLink } from 'react-csv';
 
 
 
@@ -48,7 +50,7 @@ function CustomerList() {
         },
         {
             cellRenderer: params => 
-            <Button size="small" onClick={() => deleteCustomer(params.data.links[0].href)}><DeleteOutlineIcon style={{ color: 'red' }}/></Button>,
+            <Button size="small" onClick={() => deleteCustomer(params.data.links[0].href)}><DeleteIcon style={{ color: 'red' }}/></Button>,
             width: 90
             
         },
@@ -72,12 +74,41 @@ function CustomerList() {
         }
     }
 
+    const customerDataForExport = customers.map(customer => ({
+        firstname: customer.firstname,
+        lastname: customer.lastname,
+        streetaddress: customer.streetaddress,
+        postcode: customer.postcode,
+        city: customer.city,
+        email: customer.email,
+        phone: customer.phone,
+    }));
  
     
 return (
     <>
         <br/>
+        <td>
         <AddCustomer fetchCustomers={fetchCustomers} />
+        </td>
+        <td>
+        <Button variant="outlined">
+                <CSVLink
+                    data={customerDataForExport}
+                    headers={[
+                        { label: 'First Name', key: 'firstname' },
+                        { label: 'Last Name', key: 'lastname' },
+                        { label: 'Street Address', key: 'streetaddress' },
+                        { label: 'Postcode', key: 'postcode' },
+                        { label: 'City', key: 'city' },
+                        { label: 'Email', key: 'email' },
+                        { label: 'Phone', key: 'phone' },
+                    ]}
+                    filename={"customer_data.csv"}>
+                    Export to CSV
+                </CSVLink>
+            </Button>
+        </td>
         <div className="ag-theme-material" style={{ width: '80%', height: 600 }}>
             <AgGridReact
                 rowData={customers}
