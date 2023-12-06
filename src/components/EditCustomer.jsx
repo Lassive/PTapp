@@ -66,7 +66,7 @@ function EditCustomer({ fetchCustomers, data }) {
     return (
         <div>
             <Button size="small" onClick={handleClickOpen}>
-            <EditIcon /> 
+            <EditIcon />    
             </Button>
             <Dialog open={open} onClose={handleClose}>
                 <DialogTitle> Edit </DialogTitle>
