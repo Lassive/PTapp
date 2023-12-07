@@ -74,7 +74,7 @@ function CustomerList() {
         }
     }
 
-    const customerDataForExport = customers.map(customer => ({
+    const customerDataExport = customers.map(customer => ({
         firstname: customer.firstname,
         lastname: customer.lastname,
         streetaddress: customer.streetaddress,
@@ -94,7 +94,7 @@ return (
         <td>
         <Button variant="outlined">
                 <CSVLink
-                    data={customerDataForExport}
+                    data={customerDataExport}
                     headers={[
                         { label: 'First Name', key: 'firstname' },
                         { label: 'Last Name', key: 'lastname' },
